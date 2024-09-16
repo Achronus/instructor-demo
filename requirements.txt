@@ -1,3 +1,11 @@
+# gemini
 instructor
 google-generativeai
 python-dotenv
+
+# pdf chat
+langchain
+langchain-community
+chromadb
+pypdf
+pytest
