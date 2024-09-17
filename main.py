@@ -55,4 +55,6 @@ async def extract() -> UserTicketReply:
     )
 
 
-response: UserTicketReply = extract()
+if __name__ == "__main__":
+    response: UserTicketReply = extract()
+    print(response)
