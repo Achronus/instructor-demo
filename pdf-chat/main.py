@@ -1,5 +1,6 @@
 from pathlib import Path
 from langchain_community.document_loaders import PyPDFLoader
+from langchain_huggingface import HuggingFaceEmbeddings
 from langchain.schema.document import Document
 from langchain_text_splitters import RecursiveCharacterTextSplitter
 
@@ -11,12 +12,16 @@ def load_document(filepath: str) -> list[Document]:
 
 def split_documents(docs: list[Document]) -> list:
     splitter = RecursiveCharacterTextSplitter(
-        chunk_size=800,
+        chunk_size=400,
         chunk_overlap=80,
         length_function=len,
         is_separator_regex=False,
     )
     return splitter.split_documents(docs)
+
+
+def get_embedding_model() -> HuggingFaceEmbeddings:
+    return HuggingFaceEmbeddings(model_name="sentence-transformers/all-mpnet-base-v2")
 
 
 if __name__ == "__main__":
